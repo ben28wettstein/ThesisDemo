@@ -63,7 +63,7 @@ class LinearAgent(BaseAgent):
         self.circular = circular
         self.step = 0
 
-        self.print_action_output = print_action_output
+        self.print_action_output = True #print_action_output
         self.print_obs_output = print_obs_output
 
     def get_action(self, observation, action_space):
