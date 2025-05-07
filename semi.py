@@ -34,7 +34,7 @@ for i in range(9):
     #remove actions which are False
     #actions = {key: value for key, value in actions.items() if value}
     
-    print(actions)
+    #print(actions)
     actions = list(actions)
     # Print options
     print("Available actions:")
@@ -42,14 +42,14 @@ for i in range(9):
         print(f"{idx}: {action}")
 
     # Let user pick an action
-    choice = int(input("Select action number: "))
+    choice = int(input("Select action number:  "))
 
     def param_pick(param):
         param_dict = action_space[param]
         param_dict = {key: value for key, value in param_dict.items() if value}
         for idx, p in enumerate(param_dict):
             print(f"{idx}: {p}")
-        return list(param_dict)[int(input("select " + param))]
+        return list(param_dict)[int(input("select " + param+ "  "))]
     
     if choice == 0: #Discover Remote
         subnet0 = param_pick('subnet')
