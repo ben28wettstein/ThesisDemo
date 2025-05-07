@@ -92,14 +92,19 @@ for i in range(9):
     else: #Sleep
         action = Sleep()
     chosen_action = action
-    # Manually inject selected action ^^^
-    cyborg.environment_controller.action[red_agent_name] = chosen_action
-
+    # Manually inject selected action ^^^   
     # Step the environment
-    cyborg.step()
+    x = cyborg.step(action = chosen_action, agent = red_agent_name)
+    
+    # Extract action taken (should be just a list of one action
+    action_taken = x.action[0] if isinstance(x.action, list) else x.action
 
-    # Record the action
-    red_agent_0_actions.append(chosen_action)
+    # Extract success (defaulting to 'UNKNOWN' if not present)
+    success = x.observation.get('success', 'UNKNOWN')
+    # Print formatted output
+    print(f"** Turn {i+1} for {red_agent_name} **")
+    print(f"Action: {action_taken}")
+    print(f"Action Success: {str(success).upper()}")
 
 # Optionally print the list of actions taken
-pprint(red_agent_0_actions)
+#pprint(red_agent_0_actions)
